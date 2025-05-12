@@ -25,29 +25,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     name: Build and Deploy
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_BASE_URL: https://webie.projectcampaign.online
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Cache Bun node_modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: ${{ runner.os }}-bun
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - name: Build Website
-        run: |
-          npm install \
-          && npm run build 
+      - name: npm Build
+        run: npm install && npm run build && cp build/index.html build/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -61,4 +50,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
