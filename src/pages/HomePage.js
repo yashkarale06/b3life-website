@@ -2,7 +2,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import Section from '../components/ui/Section';
-import Container from '../components/ui/Container';
 import Heading from '../components/ui/Heading';
 import Button from '../components/ui/Button';
 import AnimatedElement from '../components/ui/AnimatedElement';

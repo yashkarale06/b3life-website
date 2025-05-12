@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X} from 'lucide-react';
 import Logo from './Logo';
 import NavLinks from './NavLinks';
 import MobileNavLinks from './MobileNavLinks';
