@@ -7,7 +7,6 @@ import Button from '../components/ui/Button';
 import AnimatedElement from '../components/ui/AnimatedElement';
 import AnimatedCard from '../components/ui/AnimatedCard';
 import AnimatedGrid from '../components/ui/AnimatedGrid';
-import { ChevronRight } from 'lucide-react';
 
 const HomePage = () => {
   return (
