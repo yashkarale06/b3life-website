@@ -20,6 +20,5 @@ export const navItems = [
     ]
   },
   { label: 'About', path: '/about' },
-  { label: 'Work', path: '/work' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Work', path: '/work' }
 ];

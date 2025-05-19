@@ -3,3 +3,29 @@
 @tailwind components;
 
 @tailwind utilities;
+
+/* Add this to your existing CSS file */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Hide scrollbar for all browsers */
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* For IE and Edge */
+body {
+  -ms-overflow-style: none;
+}
