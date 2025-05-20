@@ -80,8 +80,8 @@ const LogoSlideshow = () => {
       exit={{ opacity: 0 }}
     >
       {!showFullLogo ? (
-        // Individual letter slideshow
-        <div className="relative h-96 w-96 flex items-center justify-center">
+        // Individual letter slideshow - increased size for laptop
+        <div className="relative h-96 sm:h-[28rem] md:h-[32rem] lg:h-[40rem] w-96 sm:w-[28rem] md:w-[32rem] lg:w-[40rem] flex items-center justify-center">
           <AnimatePresence mode="wait">
             {currentSlide < logoLetters.length && (
               <motion.div
@@ -95,14 +95,14 @@ const LogoSlideshow = () => {
                 <img 
                   src={`/images/${logoLetters[currentSlide]}.png`} 
                   alt={`B3LIFE Letter ${logoLetters[currentSlide]}`}
-                  className="h-96 object-contain"
+                  className="h-96 sm:h-[28rem] md:h-[32rem] lg:h-[40rem] object-contain"
                 />
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       ) : (
-        // Full logo without clickable content or text
+        // Full logo without clickable content or text - increased size for laptop
         <motion.div
           className="flex flex-col items-center justify-center"
           variants={fullLogoVariants}
@@ -111,9 +111,9 @@ const LogoSlideshow = () => {
           exit="exit"
         >
           <img 
-            src="/images/logo/B3LIFE-full.png" 
+            src="/images/Logo.png" 
             alt="B3LIFE Logo"
-            className="h-48 md:h-64 object-contain"
+            className="h-64 sm:h-80 md:h-96 lg:h-[30rem] object-contain"
           />
         </motion.div>
       )}

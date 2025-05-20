@@ -1,12 +1,13 @@
 // Enhanced HomePage.js using the new UI components
 import React from 'react';
 import Layout from '../components/Layout';
-import Section from '../components/ui/Section';
-import Heading from '../components/ui/Heading';
-import Button from '../components/ui/Button';
-import AnimatedElement from '../components/ui/AnimatedElement';
+import HeroSection from '../components/home/HeroSection';
 import AnimatedCard from '../components/ui/AnimatedCard';
 import AnimatedGrid from '../components/ui/AnimatedGrid';
+import Section from '../components/ui/Section';
+import AnimatedElement from '../components/ui/AnimatedElement';
+import Heading from '../components/ui/Heading';
+import Button from '../components/ui/Button';
 
 const HomePage = () => {
   return (
@@ -18,31 +19,7 @@ const HomePage = () => {
   );
 };
 
-const HeroSection = () => {
-  return (
-    <Section bg="gradient" className="min-h-screen flex items-center">
-      <AnimatedElement animation="fade-in">
-        <div className="max-w-3xl mx-auto text-center">
-          <Heading level={1} color="white" className="mb-6 leading-tight">
-            Doing now, What you need next
-          </Heading>
-          <p className="text-xl md:text-2xl mb-10 text-gray-100">
-            We're not just an agency—we're the full-stack force behind brands that dare to be different.
-          </p>
-          <div className="flex flex-col md:flex-row justify-center gap-4">
-            <Button as="link" to="/services" variant="primary" size="lg" className="transform hover:scale-105">
-              Our Services
-            </Button>
-            <Button as="link" to="/contact" variant="outline" size="lg">
-              Get in Touch
-            </Button>
-          </div>
-        </div>
-      </AnimatedElement>
-    </Section>
-  );
-};
-
+// Keep the rest of your components (TargetAudienceSection, ContactCTA, etc.)
 const TargetAudienceSection = () => {
   const audiences = [
     {

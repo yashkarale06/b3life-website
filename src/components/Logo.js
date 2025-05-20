@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Logo = () => (
   <Link to="/" className="flex items-center">
-    <span className="text-2xl font-bold text-purple-700">B3Life</span>
-    <span className="text-sm text-teal-600 ml-2">Brain, Brand & Business Life</span>
+    <img 
+      src="/images/Main_Logo.png" 
+      alt="B3Life Logo" 
+      className="h-8 md:h-10" // Adjust the height as needed
+    />
   </Link>
 );
 
