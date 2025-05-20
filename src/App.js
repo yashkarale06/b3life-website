@@ -1,66 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Loader3D from './components/ui/Loader3D'; // Import the loader component
-import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import WorkPage from './pages/WorkPage';
-import BrandingServicePage from './pages/services/BrandingServicePage';
-import DigitalMarketingPage from './pages/services/DigitalMarketingPage';
-import EventsPage from './pages/services/EventsPage';
-import FilmsPage from './pages/services/FilmsPage';
-import TechnologyPage from './pages/services/TechnologyPage';
-import MedicalCommunicationsPage from './pages/services/MedicalCommunicationsPage';
-import BrandActivationPage from './pages/services/BrandActivationPage';
-import PrintingPage from './pages/services/PrintingPage';
-import WebcastingPage from './pages/services/WebcastingPage';
-import MarketResearchPage from './pages/services/MarketResearchPage';
+import { motion, AnimatePresence } from 'framer-motion';
+// Import your existing components
+import Home from './pages/HomePage';
+import About from './pages/AboutPage';
+import Services from './pages/ServicesPage';
+import Contact from './pages/ContactPage';
+import Navbar from './components/Header';
+import LogoSlideshow from './components/home/LogoSlideshow';
 
 function App() {
-  // Add loading state
-  const [initialLoading, setInitialLoading] = useState(true);
+  const [showIntro, setShowIntro] = useState(true);
   
   useEffect(() => {
-    // Show loader for a short period on initial app load
-    // This gives the loader time to display its animation
+    // Set a timeout as a fallback in case the navigation in LogoSlideshow fails
+    // This is shorter than before since we're also handling navigation in LogoSlideshow
     const timer = setTimeout(() => {
-      setInitialLoading(false);
-    }, 3000); // 3 seconds loading time - adjust as needed
+      setShowIntro(false);
+    }, 8000); // Reduced from 10000ms to 8000ms as a fallback
     
     return () => clearTimeout(timer);
   }, []);
   
+  // Page transition variants - simple fade animation
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.3, // Faster transition
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.2, // Even faster exit
+      },
+    },
+  };
+  
   return (
-    <>
-      {/* The loader component */}
-      <Loader3D isLoading={initialLoading} fullScreen={true} />
-      
-      {/* Only render the main app content after loading is complete */}
-      <div style={{ opacity: initialLoading ? 0 : 1, transition: 'opacity 0.5s ease-in-out' }}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/work" element={<WorkPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            
-            {/* Service subpages */}
-            <Route path="/services/branding" element={<BrandingServicePage />} />
-            <Route path="/services/digital-marketing" element={<DigitalMarketingPage />} />
-            <Route path="/services/events" element={<EventsPage />} />
-            <Route path="/services/films" element={<FilmsPage />} />
-            <Route path="/services/technology" element={<TechnologyPage />} />
-            <Route path="/services/medical-communications" element={<MedicalCommunicationsPage />} />
-            <Route path="/services/brand-activation" element={<BrandActivationPage />} />
-            <Route path="/services/printing" element={<PrintingPage />} />
-            <Route path="/services/webcasting" element={<WebcastingPage />} />
-            <Route path="/services/market-research" element={<MarketResearchPage />} />
-          </Routes>
-        </Router>
-      </div>
-    </>
+    <Router>
+      <AnimatePresence mode="wait">
+        {showIntro ? (
+          <motion.div key="slideshow">
+            <LogoSlideshow />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="main-content"
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="w-full"
+          >
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Router>
   );
 }
 
