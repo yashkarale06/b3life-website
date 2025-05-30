@@ -98,32 +98,31 @@ const AboutHero = () => {
   };
 
   return (
-    <section className="pt-32 sm:pt-40 md:pt-56 pb-16 sm:pb-20 md:pb-24 bg-white overflow-hidden relative"> 
-      {/* Enhanced background animations */}
+    <section className="pt-32 sm:pt-40 md:pt-48 pb-16 sm:pb-20 md:pb-24 bg-white overflow-hidden relative"> 
       <AnimatedBackground />
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-6xl">
         <motion.div 
-          className="flex flex-col md:flex-row items-center justify-between gap-8"
+          className="flex flex-col md:flex-row items-center justify-between gap-16 md:gap-24 lg:gap-32"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Left side content with enhanced animations */}
+          {/* Left side content */}
           <motion.div 
-            className="w-full md:w-3/5 pr-0 md:pr-8 text-center md:text-left"
+            className="w-full md:w-1/2 lg:w-2/5 text-center md:text-left"
             variants={itemVariants}
           >
             <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 font-sans tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 font-serif tracking-normal"
               whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }} // Added for mobile interaction
+              whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <GradientText>About B3Life</GradientText>
             </motion.h1>
             <motion.div 
-              className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 mt-4 sm:mt-8 font-light min-h-[3rem]"
+              className="text-xl sm:text-2xl text-gray-700 mb-8 sm:mb-10 mt-4 sm:mt-6 font-light min-h-[3rem] font-sans"
               variants={itemVariants}
             >
               <TypewriterText 
@@ -133,7 +132,7 @@ const AboutHero = () => {
             </motion.div>
             <motion.div variants={itemVariants}>
               <motion.p 
-                className="text-gray-600 mb-6 max-w-xl mx-auto md:mx-0 font-light leading-relaxed text-sm sm:text-base"
+                className="text-gray-600 mb-8 mx-auto font-light leading-relaxed text-base sm:text-lg max-w-2xl font-sans"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 4, duration: 1 }}
@@ -141,65 +140,37 @@ const AboutHero = () => {
                 From logo to launch, app to anthem, and booth to broadcast—B3Life brings strategy, soul, and swagger to everything healthcare, wellness, and beyond.
               </motion.p>
               <motion.button 
-                className="bg-gradient-to-r from-purple-600 to-teal-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md transition-all shadow-md font-medium tracking-wide text-sm sm:text-base"
+                className="bg-gradient-to-r from-purple-600 to-teal-500 text-white px-8 py-4 rounded-lg transition-all shadow-lg font-medium tracking-wide text-base sm:text-lg font-sans hover:shadow-xl"
                 whileHover={{ 
                   scale: 1.05, 
-                  boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }} // Faster transition for mobile
+                transition={{ duration: 0.2 }}
               >
                 Learn More
               </motion.button>
             </motion.div>
           </motion.div>
           
-          {/* Right side image with enhanced animations - moved up on mobile */}
+          {/* Right side image */}
           <motion.div 
-            className="w-full sm:w-4/5 md:w-2/5 relative -mt-4 sm:mt-0 md:mt-0 flex justify-center items-center"
+            className="w-full sm:w-3/4 md:w-1/2 lg:w-2/5 relative flex justify-center items-center md:ml-auto"
             variants={itemVariants}
           >
             <motion.div 
-              className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-purple-100 rounded-full"
-              animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 10, 0],
-                opacity: [0.7, 0.9, 0.7]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            />
-            <motion.div 
-              className="absolute -z-10 top-1/3 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 bg-teal-100 rounded-full"
-              animate={{
-                scale: [1, 1.2, 1],
-                rotate: [0, -10, 0],
-                opacity: [0.7, 0.9, 0.7]
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: 1
-              }}
-            />
-            {/* Image with touch effect for mobile */}
-            <motion.div 
-              className="w-full sm:w-4/5 relative z-10"
+              className="w-full relative z-10"
               whileHover={{ scale: 1.03, rotate: 1 }}
-              whileTap={{ scale: 0.98, rotate: -1 }} // Added for mobile interaction
+              whileTap={{ scale: 0.98, rotate: -1 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
             >
               <motion.img 
                 src="/images/About.jpg" 
                 alt="B3Life Team" 
-                className="rounded-lg shadow-xl w-full h-auto object-cover max-h-56 sm:max-h-64 md:max-h-72" 
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover max-h-[400px]" 
                 initial={{ filter: "grayscale(20%)" }}
                 whileHover={{ filter: "grayscale(0%)" }}
-                whileTap={{ filter: "grayscale(0%)" }} // Added for mobile interaction
+                whileTap={{ filter: "grayscale(0%)" }}
                 transition={{ duration: 0.3 }}
               />
             </motion.div>
